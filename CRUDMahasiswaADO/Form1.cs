@@ -94,6 +94,18 @@ namespace CRUDMahasiswaADO
             }
         }
 
-        
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                
+
+            }
+        }
     }
 }
