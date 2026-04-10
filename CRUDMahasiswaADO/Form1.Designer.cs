@@ -43,11 +43,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -158,77 +156,60 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(107, 521);
+            this.btnConnect.Location = new System.Drawing.Point(629, 103);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(96, 34);
             this.btnConnect.TabIndex = 13;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(107, 593);
+            this.btnLoad.Location = new System.Drawing.Point(629, 166);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(102, 34);
             this.btnLoad.TabIndex = 14;
             this.btnLoad.Text = "Load Data";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // button2
+            // btnInsert
             // 
-            this.button2.Location = new System.Drawing.Point(629, 123);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 24);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Membuka koneksi";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnInsert.Location = new System.Drawing.Point(629, 227);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(145, 24);
+            this.btnInsert.TabIndex = 17;
+            this.btnInsert.Text = "Menambah Data";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // button3
+            // btnUpdate
             // 
-            this.button3.Location = new System.Drawing.Point(629, 165);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(158, 27);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "Menampilkan Data";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(629, 287);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(145, 24);
+            this.btnUpdate.TabIndex = 18;
+            this.btnUpdate.Text = "Mengubah Data";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnDelete
             // 
-            this.button4.Location = new System.Drawing.Point(629, 227);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(145, 24);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Menambah Data";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(629, 287);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(145, 24);
-            this.button5.TabIndex = 18;
-            this.button5.Text = "Mengubah Data";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(629, 353);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(145, 24);
-            this.button6.TabIndex = 19;
-            this.button6.Text = "Menghapus Data";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(629, 353);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(145, 24);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Menghapus Data";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 666);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.button1);
@@ -269,11 +250,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
