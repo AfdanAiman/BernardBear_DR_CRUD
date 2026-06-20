@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRUDMahasiswaADO
@@ -16,7 +13,9 @@ namespace CRUDMahasiswaADO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            // Baris ini yang menentukan form mana yang pertama kali dijalankan
+            Application.Run(new Dashboard());
         }
     }
 }
