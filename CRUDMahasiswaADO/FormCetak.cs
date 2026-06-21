@@ -20,7 +20,7 @@ namespace CRUDMahasiswaADO
             prodi = Prodi;
             tglmasuk = TglMasuk;
 
-            // Baris ini tetap dipertahankan agar form tidak blank
+          
             this.Load += FormCetak_Load;
         }
 
@@ -40,7 +40,7 @@ namespace CRUDMahasiswaADO
                 da.Fill(dtMahasiswa);
                 conn.Close();
 
-                // MessageBox detektor sudah dihapus dari sini
+             
 
                 if (dtMahasiswa.Rows.Count > 0)
                 {
@@ -65,7 +65,7 @@ namespace CRUDMahasiswaADO
                 }
                 else
                 {
-                    // Pesan ini hanya akan muncul jika data di database benar-benar kosong
+              
                     MessageBox.Show("Data tidak ditemukan dari database!");
                 }
             }

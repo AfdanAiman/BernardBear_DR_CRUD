@@ -44,11 +44,11 @@ namespace CRUDMahasiswaADO
         {
             try
             {
-                // Menarik data murni menggunakan DAL
+               
                 bindingSource.DataSource = dbLogic.GetMhs();
                 dataGridView1.DataSource = bindingSource;
 
-                // Memastikan gambar di DataGridView dirender dengan rapi (jika kolom Foto ada)
+              
                 if (dataGridView1.Columns.Contains("Foto"))
                 {
                     DataGridViewImageColumn fotoColumn = (DataGridViewImageColumn)dataGridView1.Columns["Foto"];
@@ -57,7 +57,7 @@ namespace CRUDMahasiswaADO
 
                 HitungTotal();
 
-                // Kembalikan status tombol ke normal
+              
                 dataGridView1.Enabled = true;
                 if (this.Controls.ContainsKey("btnImpDb")) this.Controls["btnImpDb"].Enabled = false;
             }
@@ -91,7 +91,7 @@ namespace CRUDMahasiswaADO
             txtKodeProdi.Clear();
             dtpTLahir.Value = DateTime.Now;
 
-            if (fotoMhs != null) fotoMhs.Image = null; // Kosongkan preview gambar
+            if (fotoMhs != null) fotoMhs.Image = null; 
 
             txtNIM.Focus();
         }
@@ -102,20 +102,19 @@ namespace CRUDMahasiswaADO
             {
                 dbLogic.InsertLog(pesan);
             }
-            catch { /* Abaikan jika tabel log belum dibuat */ }
+            catch {  }
         }
 
         private byte[] ConvertImageToBytes(PictureBox pb)
         {
             if (pb.Image == null) return null;
 
-            // KUNCI PERBAIKAN: Kita membuat salinan (clone) gambar agar file asli tidak terkunci
             using (MemoryStream ms = new MemoryStream())
             {
-                // Membuat bitmap baru sebagai salinan dari gambar yang ada
+                
                 using (Bitmap bmp = new Bitmap(pb.Image))
                 {
-                    // Menyimpan salinan ke stream
+
                     bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 return ms.ToArray();
@@ -128,7 +127,7 @@ namespace CRUDMahasiswaADO
             return File.ReadAllBytes(path);
         }
 
-        // Pastikan event ini dihubungkan ke tombol Upload Gambar Anda
+        
         private void btnUpload_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -140,7 +139,7 @@ namespace CRUDMahasiswaADO
             }
         }
 
-        // ================= FITUR CRUD MENGGUNAKAN DAL =================
+      
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
@@ -228,9 +227,7 @@ namespace CRUDMahasiswaADO
             }
         }
 
-        // ================= FITUR IMPORT EXCEL =================
-
-        // Pastikan event ini dihubungkan ke tombol "Import from Excel" Anda
+     
         private void btnImpExcel_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx" })
@@ -250,10 +247,9 @@ namespace CRUDMahasiswaADO
                             DataTable dt = result.Tables[0];
                             dataGridView1.DataSource = dt;
 
-                            // Kunci datagrid agar user fokus menekan tombol Import to Database
+                        
                             dataGridView1.Enabled = false;
 
-                            // Aktifkan tombol import to database (jika Anda sudah menamainya btnImpDb)
                             if (this.Controls.ContainsKey("btnImpDb")) this.Controls["btnImpDb"].Enabled = true;
                         }
                     }
@@ -261,7 +257,7 @@ namespace CRUDMahasiswaADO
             }
         }
 
-        // Pastikan event ini dihubungkan ke tombol "Import from Database" (atau ganti nama eventnya)
+        
         private void btnImpDb_Click(object sender, EventArgs e)
         {
             try
@@ -281,7 +277,7 @@ namespace CRUDMahasiswaADO
                     string jk = row["JenisKelamin"].ToString().Trim();
                     string alamat = row["Alamat"].ToString().Trim();
 
-                    // Deteksi nama kolom Prodi dari header file Excel (mendukung "KodeProdi" atau "Nama Prodi")
+                 
                     string kodeProdi = row.Table.Columns.Contains("KodeProdi") ? row["KodeProdi"].ToString().Trim() : row["Nama Prodi"].ToString().Trim();
                     string fotoPath = row.Table.Columns.Contains("FotoPath") ? row["FotoPath"].ToString().Trim() : string.Empty;
 
@@ -307,7 +303,7 @@ namespace CRUDMahasiswaADO
             }
         }
 
-        // ================= DATAGRIDVIEW EVENT =================
+      
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -326,13 +322,12 @@ namespace CRUDMahasiswaADO
 
                 txtAlamat.Text = row.Cells["Alamat"].Value?.ToString();
 
-                // Menarik KodeProdi atau NamaProdi tergantung kolom yang dirender SP SQL Anda
+               
                 if (dataGridView1.Columns.Contains("KodeProdi"))
                     txtKodeProdi.Text = row.Cells["KodeProdi"].Value?.ToString();
                 else if (dataGridView1.Columns.Contains("NamaProdi"))
                     txtKodeProdi.Text = row.Cells["NamaProdi"].Value?.ToString();
 
-                // Proses pembacaan Byte Array menjadi Gambar di PictureBox
                 if (dataGridView1.Columns.Contains("Foto") && row.Cells["Foto"].Value != DBNull.Value && row.Cells["Foto"].Value != null)
                 {
                     byte[] imgBytes = (byte[])row.Cells["Foto"].Value;
@@ -344,14 +339,12 @@ namespace CRUDMahasiswaADO
                 }
                 else
                 {
-                    fotoMhs.Image = null; // Kosongkan jika tidak ada foto
+                    fotoMhs.Image = null; 
                 }
 
-                txtNIM.Enabled = false; // Kunci input NIM karena bertindak sebagai Primary Key
-            }
+                txtNIM.Enabled = false; 
         }
 
-        // ================= NAVIGASI =================
 
         private void btnRekapData_Click(object sender, EventArgs e)
         {
@@ -372,10 +365,10 @@ namespace CRUDMahasiswaADO
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            // 1. Membersihkan semua Textbox, ComboBox, Foto, dan MEMBUKA KUNCI NIM
+      
             ClearForm();
 
-            // 2. Menarik ulang data terbaru dari database ke dalam tabel
+        
             LoadData();
         }
     }

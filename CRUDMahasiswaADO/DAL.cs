@@ -204,7 +204,7 @@ namespace CRUDMahasiswaADO
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                // Query rentan SQL Injection untuk keperluan simulasi praktikum
+                
                 string query = "UPDATE mahasiswa SET nama='HACKED' WHERE NIM ='" + nim + "'";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.ExecuteNonQuery();

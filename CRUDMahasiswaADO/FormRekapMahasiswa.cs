@@ -96,7 +96,7 @@ namespace CRUDMahasiswaADO
 
         private void btnCetak_Click(object sender, EventArgs e)
         {
-            // Constructor mengirimkan string prodi dan objek DateTime sesuai petunjuk modul
+           
             FormCetak frm2 = new FormCetak(cmbProdi.SelectedValue.ToString(), dtpTanggalMasuk.Value);
             frm2.Show();
             this.Hide();
